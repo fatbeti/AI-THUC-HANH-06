@@ -56,8 +56,6 @@ for col in num_cols:
 print("\n=== MISSING AFTER IMPUTATION ===")
 print(df.isnull().sum())
 
-
-
 # ============================================================
 # 3. EDA (EXPLORATORY DATA ANALYSIS)
 # ============================================================
