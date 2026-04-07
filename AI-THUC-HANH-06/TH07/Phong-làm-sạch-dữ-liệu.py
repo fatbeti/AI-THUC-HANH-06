@@ -30,8 +30,7 @@ def handle_outliers(df, columns):
         df[col] = np.clip(df[col], lower_bound, upper_bound)
     return df
 
-all_features = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 
-                'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
+all_features = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
 df = handle_outliers(df, all_features)
 
 # 4. Chia đặc trưng (X) và nhãn (y)
@@ -43,9 +42,9 @@ y = df['Outcome']
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
-
 # 6. Scaling: Dùng StandardScaler
 # Đưa dữ liệu về cùng thang đo (trung bình = 0, độ lệch chuẩn = 1)
+
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
@@ -60,6 +59,7 @@ X_test_final['Outcome'] = y_test.values
 # 7. Output: Xuất file dữ liệu sạch
 X_train_final.to_csv('khu_train_cleaned.csv', index=False)
 X_test_final.to_csv('khu_test_cleaned.csv', index=False)
+
 
 print("--- Hoàn tất Tiền xử lý & Feature Engineering ---")
 print(f"Số lượng mẫu tập Train: {len(X_train_final)}")
